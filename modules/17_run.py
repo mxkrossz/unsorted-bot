@@ -1,0 +1,26 @@
+async def main():
+    await bot.delete_webhook(drop_pending_updates=False)
+    try:
+        await startup_notice()
+    except Exception:
+        logging.exception("Ошибка startup_notice")
+    _ht = asyncio.create_task(heartbeat_loop())
+    _bg_tasks.add(_ht)
+    _jt = asyncio.create_task(janitor_loop())
+    _bg_tasks.add(_jt)
+    _rt = asyncio.create_task(reminder_loop())
+    _bg_tasks.add(_rt)
+    _pt = asyncio.create_task(payout_loop())
+    _bg_tasks.add(_pt)
+    _ot = asyncio.create_task(offer_loop())
+    _bg_tasks.add(_ot)
+    _bt = asyncio.create_task(backfill_biz_conn())
+    _bg_tasks.add(_bt)
+    _at = asyncio.create_task(achievements_loop())
+    _bg_tasks.add(_at)
+    _rtt = asyncio.create_task(retention_loop())
+    _bg_tasks.add(_rtt)
+    _lgt = asyncio.create_task(links_feed_loop())
+    _bg_tasks.add(_lgt)
+    await dp.start_polling(bot)
+

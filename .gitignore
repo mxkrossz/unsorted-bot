@@ -1,11 +1,12 @@
 venv/
 __pycache__/
+*.pyc
 *.db
 *.db-*
 media/
 mtproto.json
 mtproto_bot*
 offer.txt
+local_api.txt
 *.bak*
-*.b64
-patch_v*.py
+*.log

@@ -1,0 +1,5 @@
+aiogram>=3.13
+aiohttp
+faster-whisper
+av<17
+telethon   # необязательно: запасной способ скачивания одноразовых медиа
